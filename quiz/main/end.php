@@ -37,16 +37,22 @@ if ($mysqli->connect_error) {
 if (!$mysqli->select_db('quiz')) {
   echo "Could not connect to database: " . $con->error;
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
-    if (!$mysqli->query("CREATE TABLE IF NOT EXISTS quiz (
-      'name' VARCHAR(32),
-      'email' VARCHAR(64),
-      'score' INT (1),
-      'date' DATE
-    )")) {
       echo "Could not create database: " . $mysqli->error;
-    }
   }
   $mysqli->select_db('quiz');
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS quiz (
+  'name' VARCHAR(32),
+  'email' VARCHAR(64),
+  'score' INT (1),
+  'date' DATE
+  )";
+
+if ($mysqli->query($sql) === TRUE) {
+  echo "New table created successfully";
+} else {
+  echo "Error creating table: " . $sql . "<br>" . $mysqli->error;
 }
 
 // Insert the users data, score and the date into the database
@@ -56,7 +62,7 @@ VALUES ('$name', '$email', '$score', '$date')";
 if ($mysqli->query($sql) === TRUE) {
   echo "New record created successfully";
 } else {
-  echo "Error: " . $sql . "<br>" . $mysqli->error;
+  echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
 }
 ?>
 
@@ -86,3 +92,8 @@ if ($mysqli->query($sql) === TRUE) {
 
 </body>
 
+<!-- CREATE TABLE IF NOT EXISTS quiz (
+      'name' VARCHAR(32),
+      'email' VARCHAR(64),
+      'score' INT (1),
+      'date' DATE -->
