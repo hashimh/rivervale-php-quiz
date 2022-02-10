@@ -33,46 +33,37 @@ if ($mysqli->connect_error) {
   exit();
 }
 
-// Create database if it does not exist
-if (!$mysqli->select_db('quiz')) {
-  echo "Could not connect to database: " . $mysqli->error;
-  if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
-      echo "Could not create database: " . $mysqli->error;
-  }
-  $mysqli->select_db('quiz');
-}
-
 // Try to connect to 'quiz' database - if unsuccesful, then create 'quiz' db
-
 if (!$mysqli->select_db('quiz')) {
   echo "Could not connect to database: " . $mysqli->error;
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
       echo "Could not create database: " . $mysqli->error;
   }
   $mysqli->select_db('quiz');
-
-  $sql = "CREATE TABLE quiz(
-    'name' VARCHAR(32) NOT NULL,
-    'email' VARCHAR(64) NOT NULL,
-    'score' INT (1) NOT NULL,
-    'date' DATE NOT NULL
-    )";
-  if ($mysqli->query($sql) === TRUE) {
-    echo "Table created succesfully.";
-    // Insert the users data, score and the date into the database
-    $sql = "INSERT INTO quiz (name, email, score, date)
-    VALUES ('$name', '$email', '$score', '$date')";
-
-    if ($mysqli->query($sql) === TRUE) {
-      echo "New record created successfully";
-    } else {
-      echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
-    }
-  } else {
-    echo "Error creating table: " . $mysqli->error;
-  }
 }
 
+if (!$mysqli ->select_table('quiz')) {
+  echo "Could not connect to table: " . $mysqli->error;
+  if (!$mysqli->query("CREATE TABLE IF NOT EXISTS quiz (
+    'name' VARCHAR(32),
+    'email' VARCHAR(64),
+    'score' INT (1),
+    'date' DATE
+    )")) {
+      echo "Could not create table: " . $mysqli->error;
+    }
+    $mysqli->select_table('quiz');
+}
+
+// Insert the users data, score and the date into the database
+$sql = "INSERT INTO quiz (name, email, score, date)
+VALUES ('$name', '$email', '$score', '$date')";
+
+if ($mysqli->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
+}
 ?>
 
 
@@ -100,3 +91,9 @@ if (!$mysqli->select_db('quiz')) {
 
 
 </body>
+
+<!-- CREATE TABLE IF NOT EXISTS quiz (
+      'name' VARCHAR(32),
+      'email' VARCHAR(64),
+      'score' INT (1),
+      'date' DATE -->
