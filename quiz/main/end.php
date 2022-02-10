@@ -43,11 +43,11 @@ if (!$mysqli->select_db('quiz')) {
   }
   $mysqli->select_db('quiz');
 
-  $sql = "CREATE TABLE IF NOT EXISTS quiz (
-    'name' VARCHAR(32),
-    'email' VARCHAR(64),
-    'score' INT (1),
-    'date' DATE
+  $sql = "CREATE TABLE quiz(
+    'name' VARCHAR(32) NOT NULL,
+    'email' VARCHAR(64) NOT NULL,
+    'score' INT (1) NOT NULL,
+    'date' DATE NOT NULL
     )";
   if ($mysqli->query($sql) === TRUE) {
     echo "Table created succesfully.";
@@ -96,9 +96,3 @@ if (!$mysqli->select_db('quiz')) {
 
 
 </body>
-
-<!-- CREATE TABLE IF NOT EXISTS quiz (
-      'name' VARCHAR(32),
-      'email' VARCHAR(64),
-      'score' INT (1),
-      'date' DATE -->
