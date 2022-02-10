@@ -13,7 +13,6 @@ session_start();
 // define vars and set to empty values
 $nameErr = $emailErr = "";
 $name = $email = "";
-$score = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -38,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           // everything checks out, save entries to session and redirect user to next page
           $_SESSION['name'] = $_POST['name'];
           $_SESSION['email'] = $_POST['email'];
-          $_SESSION['score'] = $_POST['score'];
+          $_SESSION['score'] = 0;
           header('Location: questions/q1.php');
           exit();
         }

@@ -23,7 +23,6 @@ $date = date('Y-m-d');
 // Assign variables from the session
 $name = $_SESSION['name'];
 $email = $_SESSION['email'];
-$score = $_SESSION['score'];
 
 // Create mysqli object and pass through credentials
 $mysqli = new mysqli($db_host, $db_user, $db_pass, "");
@@ -50,30 +49,18 @@ $sql = "CREATE TABLE IF NOT EXISTS quiz (
   )";
 
   if ($mysqli->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "Table quiz created successfully";
   } else {
     echo "Error creating table: " . $mysqli->error;
   }
 
-// if (!$mysqli ->select_table('quiz')) {
-//   echo "Could not connect to table: " . $mysqli->error;
-//   if (!$mysqli->query("CREATE TABLE IF NOT EXISTS quiz (
-//     'name' VARCHAR(32),
-//     'email' VARCHAR(64),
-//     'score' INT (1),
-//     'date' DATE
-//     )")) {
-//       echo "Could not create table: " . $mysqli->error;
-//     }
-//     $mysqli->select_table('quiz');
-// }
-
 // Insert the users data, score and the date into the database
 $sql = "INSERT INTO quiz (name, email, score, date)
-VALUES ('$name', '$email', '$score', '$date')";
+VALUES ('$name', '$email', '{$_SESSION['score']}', '$date')";
 
 if ($mysqli->query($sql) === TRUE) {
   echo "New record created successfully";
+  unset($_SESSION['score']);
 } else {
   echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
 }
@@ -91,7 +78,7 @@ if ($mysqli->query($sql) === TRUE) {
     <div class="container">
       <h2>The quiz has finished!</h2>
       <p>Congratulations <?php echo $name ?>, the you have completed the quiz! See your score below, and optionally retake the quiz. Your information and score have been saved in the database.</p>
-      <p id="end-score">Your final score is: <?php echo $score ?> out of 5!</p>
+      <p id="end-score">Your final score is: <?php echo $_SESSION['score'] ?> out of 5!</p>
       <a href="questions/q1.php" class="start">Retake</a>
     </div>
   </main>
@@ -104,9 +91,3 @@ if ($mysqli->query($sql) === TRUE) {
 
 
 </body>
-
-<!-- CREATE TABLE IF NOT EXISTS quiz (
-      'name' VARCHAR(32),
-      'email' VARCHAR(64),
-      'score' INT (1),
-      'date' DATE -->
