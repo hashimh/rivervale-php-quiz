@@ -17,6 +17,14 @@ $db_host = 'localhost';
 $db_user = 'root';
 $db_pass = '';
 
+// Create a variable for the date
+$date = date('Y-m-d');
+
+// Assign variables from the session
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+$score = $_SESSION['score'];
+
 // Create mysqli object and pass through credentials
 $mysqli = new mysqli($db_host, $db_user, $db_pass, "");
 // Handle any potential errors, log them and exit function
@@ -29,20 +37,16 @@ if ($mysqli->connect_error) {
 if (!$mysqli->select_db('quiz')) {
   echo "Could not connect to database: " . $con->error;
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
+    if (!$mysqli->query("CREATE TABLE IF NOT EXISTS quiz (
+      'name' VARCHAR(32),
+      'email' VARCHAR(64),
+      'score' INT (1),
+      'date' DATE
+    );"))
     echo "Could not create database: " . $mysqli->error;
   }
   $mysqli->select_db('quiz');
 }
-
-
-
-// Create a variable for the date
-$date = date('Y-m-d');
-
-// Assign variables from the session
-$name = $_SESSION['name'];
-$email = $_SESSION['email'];
-$score = $_SESSION['score'];
 
 // Insert the users data, score and the date into the database
 $sql = "INSERT INTO quiz (name, email, score, date)
