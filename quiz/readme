@@ -1,14 +1,14 @@
 Some prerequisites for running the program:
 
-1. Download/clone the Github repository into your computer.
+1. Download and install a PHP runtime environment. I used WAMP Server (https://sourceforge.net/projects/wampserver/).
 
-2. Have a PHP runtime environment (I have used WAMP to create this)
-      -> Within WAMP, check your SQL username and password. If they are "root" and the password is blank you won't need to make any changes in the code.
-      -> If your username and password differ to the ones mentioned above, please go into "end.php" and change values in lines 17 and 18, with your own SQL username and password.
+2. Once downloaded, download this Githhub repository and place the 'quiz' folder into the 'www' folder inside WAMP. This path is usually C:/wamp64/www.
 
-3. Move the main quiz folder, containing all of these files, to the 'www' folder in your WAMP directory. In most cases this is C:/wamp64/www.
+3. Within WAMP, check your SQL username and password. If they are "root" and the password is blank you won't need to make any changes in the code. 
+   If your username and password differ to the ones mentioned above:
+            - Go into "end.php" and change values in lines 17 and 18, with your own SQL username and password.
 
-4. Now, go into your web browser, and enter the link: localhost/quiz/main/main.php to begin the application.
+4. The app is now ready to be used. Go into your web browser, and enter the link: localhost/quiz/main/main.php
 
 Throughout the code are comments explaining what certain sections do, and why they are being used.
 
