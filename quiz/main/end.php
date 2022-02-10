@@ -33,37 +33,42 @@ if ($mysqli->connect_error) {
   exit();
 }
 
+
+
 // Try to connect to 'quiz' database - if unsuccesful, then create 'quiz' db
 if (!$mysqli->select_db('quiz')) {
-  echo "Could not connect to database: " . $con->error;
+  echo "Could not connect to database: " . $mysqli->error;
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
       echo "Could not create database: " . $mysqli->error;
   }
   $mysqli->select_db('quiz');
+
+  $sql = "CREATE TABLE IF NOT EXISTS quiz (
+    'name' VARCHAR(32),
+    'email' VARCHAR(64),
+    'score' INT (1),
+    'date' DATE
+    )";
+  if ($mysqli->query($sql) === TRUE) {
+    echo "Table created succesfully.";
+    // Insert the users data, score and the date into the database
+    $sql = "INSERT INTO quiz (name, email, score, date)
+    VALUES ('$name', '$email', '$score', '$date')";
+
+    if ($mysqli->query($sql) === TRUE) {
+      echo "New record created successfully";
+    } else {
+      echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
+    }
+  } else {
+    echo "Error creating table: " . $mysqli->error;
+  }
 }
 
-$sql = "CREATE TABLE IF NOT EXISTS quiz (
-  'name' VARCHAR(32),
-  'email' VARCHAR(64),
-  'score' INT (1),
-  'date' DATE
-  )";
 
-if ($mysqli->query($sql) === TRUE) {
-  echo "New table created successfully";
-} else {
-  echo "Error creating table: " . $sql . "<br>" . $mysqli->error;
-}
 
-// Insert the users data, score and the date into the database
-$sql = "INSERT INTO quiz (name, email, score, date)
-VALUES ('$name', '$email', '$score', '$date')";
 
-if ($mysqli->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
-}
+
 ?>
 
 
