@@ -60,6 +60,7 @@ VALUES ('$name', '$email', '{$_SESSION['score']}', '$date')";
 
 if ($mysqli->query($sql) === TRUE) {
   echo "New record created successfully";
+  $score = $_SESSION['score'];
   unset($_SESSION['score']);
 } else {
   echo "Error posting data: " . $sql . "<br>" . $mysqli->error;
@@ -78,7 +79,7 @@ if ($mysqli->query($sql) === TRUE) {
     <div class="container">
       <h2>The quiz has finished!</h2>
       <p>Congratulations <?php echo $name ?>, the you have completed the quiz! See your score below, and optionally retake the quiz. Your information and score have been saved in the database.</p>
-      <p id="end-score">Your final score is: <?php echo $_SESSION['score'] ?> out of 5!</p>
+      <p id="end-score">Your final score is: <?php echo $score ?> out of 5!</p>
       <a href="questions/q1.php" class="start">Retake</a>
     </div>
   </main>
