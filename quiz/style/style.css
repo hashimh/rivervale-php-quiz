@@ -1,0 +1,96 @@
+/* BODY AND CONTAINER CSS */
+
+body {
+  background-color: #032c4a;
+  font-family: Raleway;
+  color: white;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+header {
+  border-bottom: 2px solid #f4f4f4;
+  text-align: center;
+  font-size: 3vh;
+}
+footer {
+  border-top: 2px solid #f4f4f4;
+  text-align: center;
+  padding-top: 2vw;
+}
+main {
+  margin-bottom: 2vw;
+  font-size: 2vh;
+}
+
+/* MAIN PHP CSS */
+.in {
+  display: flex;
+  padding: 2vh 0 4vh 0;
+}
+.user-entry {
+  padding: 1vh;
+  font-size: 2vh;
+  width: 50%;
+}
+.error {
+  padding: 1vh;
+  font-size: 2vh;
+  color: red;
+}
+
+#start-button {
+  padding: 3vh;
+  font-size: 2vh;
+  font-family: Raleway;
+}
+
+/* QUESTION PAGES CSS */
+.choices {
+  text-align: left;
+}
+
+/* .h2 {
+  color: black;
+  padding: 2vh;
+  background: #f4f4f4;
+  border: 1px dotted #ccc;
+  margin: 20px 0 10px 0;
+} */
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  color: black;
+  padding: 2vh;
+  background-color: #f1f1f1;
+  border: 1px solid #032c4a;
+  width: 50%;
+}
+
+#submit-answer {
+  padding: 2vh;
+  font-size: 2vh;
+}
+
+/* END PAGE CSS */
+a.start {
+  text-decoration: none;
+  color: black;
+  padding: 2vh;
+  display: inline-block;
+  background: #f4f4f4;
+  border: 1px solid black;
+  margin: 20px 0 10px 0;
+}
+
+#end-score {
+  font-size: 2.5vw;
+}

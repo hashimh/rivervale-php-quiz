@@ -1,0 +1,15 @@
+Some prerequisites for running the program:
+
+1. Have a PHP runtime environment (I have used WAMP to create this)
+      -> Within WAMP, check your SQL username and password. If they are "root" and the password is blank you won't need to make any changes in the code.
+      -> If your username and password differ to the ones mentioned above, please go into "end.php" and change values in lines 17 and 18, with your own SQL username and password.
+
+2. Move the main quiz folder, containing all of these files, to the 'www' folder in your WAMP directory. In most cases this is C:/wamp64/www.
+
+3. Now, go into your web browser, and enter the link: localhost/quiz/main/main.php to begin the application.
+
+Throughout the code are comments explaining what certain sections do, and why they are being used.
+
+COMMENTS AND ISSUES:
+- Had some trouble using PHP as I have not yet had a PHP runtime environment to use on my computer, as all of my previous PHP work was done on University machines (thanks Trevor for recommending WAMP).
+- I ended up separating the questions into their own files. I wanted to app to display one question at a time. Usually I would have done this with JavaScript, and manipulated the DOM. This would have allowed me to have one main .js file for the questions, but still only display one at a time.
