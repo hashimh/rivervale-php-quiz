@@ -22,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($_POST['q4-answers'] == "d") {
         $answerErr = "Correct! Moving to the next question...";
         $_SESSION['score'] = $_SESSION['score'] + 1;
-        header("Refresh:5; url=q5.php");
+        header("Refresh:3; url=q5.php");
 
       } else {
         $answerErr = "Incorrect! The right answer was 'd'.";
-        header("Refresh:5; url=q5.php");
+        header("Refresh:3; url=q5.php");
       }
     }
   }
