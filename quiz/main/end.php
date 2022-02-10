@@ -42,8 +42,9 @@ if (!$mysqli->select_db('quiz')) {
       'email' VARCHAR(64),
       'score' INT (1),
       'date' DATE
-    );"))
-    echo "Could not create database: " . $mysqli->error;
+    );")) {
+      echo "Could not create database: " . $mysqli->error;
+    }
   }
   $mysqli->select_db('quiz');
 }
