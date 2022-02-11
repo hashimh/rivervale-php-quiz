@@ -10,6 +10,8 @@ Some prerequisites for running the program:
 
 4. The app is now ready to be used. Go into your web browser, and enter the link: localhost/quiz/main/main.php
 
+5. When finished, access the SQL database with localhost/phpmyadmin to see your saved records in the 'quiz' database.
+
 Throughout the code are comments explaining what certain sections do, and why they are being used.
 
 COMMENTS AND ISSUES:
