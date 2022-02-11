@@ -2,7 +2,7 @@ Some prerequisites for running the program:
 
 1. Download and install a PHP runtime environment. I used WAMP Server (https://sourceforge.net/projects/wampserver/). Please ensure the WAMP services are running when using this application.
 
-2. Once downloaded, download this Githhub repository. Unzip the file, and go into rivervale-php-quiz-main until getting to the 'quiz' folder. Copy and past this folder into the 'www' folder inside WAMP. This path is usually C:/wamp64/www. The new path for the app should be: .../wamp64/www/quiz/
+2. Once downloaded, download the 'quiz' folder from this Githhub repository. Unzip the file, and go into rivervale-php-quiz-main until getting to the 'quiz' folder. Copy and past this folder into the 'www' folder inside WAMP. This path is usually C:/wamp64/www. The new path for the app should be: .../wamp64/www/quiz/
 
 3. Within WAMP, check your SQL username and password. If they are "root" and the password is blank you won't need to make any changes in the code.
    If your username and password differ to the ones mentioned above:
