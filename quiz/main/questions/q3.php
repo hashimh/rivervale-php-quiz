@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Refresh:3; url=q4.php");
 
       } else {
-        $answerErr = "Incorrect! The right answer was 'b'.";
+        $answerErr = "Incorrect! The right answer was 'B'.";
         header("Refresh:3; url=q4.php");
       }
     }
@@ -52,22 +52,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul class="choices">
           <li>
             <input type="radio" name="q3-answers" id="q3-a" value="a" />
-            <label for="q3-a">Bei Mercedes Weggeworfen</label>
+            <label for="q3-a">A: Bei Mercedes Weggeworfen</label>
           </li>
 
           <li>
             <input type="radio" name="q3-answers" id="q3-b" value="b" />
-            <label for="q3-b">Bavarian Motor Works</label>
+            <label for="q3-b">B: Bavarian Motor Works</label>
           </li>
 
           <li>
             <input type="radio" name="q3-answers" id="q3-c" value="c" />
-            <label for="q3-c">Beautiful Mechanical Wonder</label>
+            <label for="q3-c">C: Beautiful Mechanical Wonder</label>
           </li>
 
           <li>
             <input type="radio" name="q3-answers" id="q3-d" value="d" />
-            <label for="q3-d">Bosnian Motor Works</label>
+            <label for="q3-d">D: Bosnian Motor Works</label>
           </li>
 
         </ul>
@@ -80,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <footer>
     <div class="container">
-      Hashim Hussain
     </div>
   </footer>
 

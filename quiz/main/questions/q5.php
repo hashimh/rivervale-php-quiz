@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Refresh:3; url=../end.php");
 
       } else {
-        $answerErr = "Incorrect! The right answer was 'b'.";
+        $answerErr = "Incorrect! The right answer was 'B'.";
         header("Refresh:3; url=../end.php");
       }
     }
@@ -52,22 +52,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul class="choices">
           <li>
             <input type="radio" name="q5-answers" id="q5-a" value="a" />
-            <label for="q5-a">Three</label>
+            <label for="q5-a">A: Three</label>
           </li>
 
           <li>
             <input type="radio" name="q5-answers" id="q5-b" value="b" />
-            <label for="q5-b">Four</label>
+            <label for="q5-b">B: Four</label>
           </li>
 
           <li>
             <input type="radio" name="q5-answers" id="q5-c" value="c" />
-            <label for="q5-c">Five</label>
+            <label for="q5-c">C: Five</label>
           </li>
 
           <li>
             <input type="radio" name="q5-answers" id="q5-d" value="d" />
-            <label for="q5-d">Six</label>
+            <label for="q5-d">D: Six</label>
           </li>
 
         </ul>
@@ -80,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <footer>
     <div class="container">
-      Hashim Hussain
     </div>
   </footer>
 

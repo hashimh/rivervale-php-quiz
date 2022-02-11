@@ -87,7 +87,6 @@ function test_input($data) {
 
   <footer>
     <div class="container">
-      Hashim Hussain
     </div>
   </footer>
 

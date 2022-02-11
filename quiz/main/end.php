@@ -86,7 +86,6 @@ if ($mysqli->query($sql) === TRUE) {
 
   <footer>
     <div class="container">
-      Hashim Hussain
     </div>
   </footer>
 
