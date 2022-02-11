@@ -10,31 +10,30 @@
 <?php
 session_start();
 
-// define vars and set to empty values
+// Define variables
 $nameErr = $emailErr = "";
 $name = $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-  // validate the username and email
+  // Validate the name, then email
   if (empty($_POST["name"])) {
     $nameErr = "Please enter your name!";
   } else {
     $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
+    // Regex to check syntax of input
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
       $nameErr = "Only letters and white space allowed";
     } else {
-      // username checks out, now check email
+      // Validate email
       if (empty($_POST["email"])) {
         $emailErr = "Please enter your email!";
       } else {
         $email = test_input($_POST["email"]);
-        // check if e-mail address is well-formed
+        // Check if a valid email has been entered
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $emailErr = "Invalid email format";
         } else {
-          // everything checks out, save entries to session and redirect user to next page
+          // Save entries as SESSION variables and redirect to first question.
           $_SESSION['name'] = $_POST['name'];
           $_SESSION['email'] = $_POST['email'];
           $_SESSION['score'] = 0;
@@ -48,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
+// A function to return an input as a string
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -58,6 +58,7 @@ function test_input($data) {
 ?>
 
 <body>
+
   <header>
     <div class="container">
       <h1>Rivervale Task: PHP Quiz Game</h1>
@@ -89,7 +90,6 @@ function test_input($data) {
     <div class="container">
     </div>
   </footer>
-
 
 </body>
 

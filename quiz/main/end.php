@@ -24,7 +24,7 @@ $date = date('Y-m-d');
 $name = $_SESSION['name'];
 $email = $_SESSION['email'];
 
-// Create mysqli object and pass through credentials
+// Create mysqli object to connect to SQL and pass through credentials
 $mysqli = new mysqli($db_host, $db_user, $db_pass, "");
 // Handle any potential errors, log them and exit function
 if ($mysqli->connect_error) {
@@ -38,9 +38,11 @@ if (!$mysqli->select_db('quiz')) {
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
       echo "Could not create database: " . $mysqli->error;
   }
+  // Select 'quiz' as the database to use
   $mysqli->select_db('quiz');
 }
 
+// SQL query for creating the quiz table, where user info will be stored.
 $sql = "CREATE TABLE IF NOT EXISTS quiz (
   name VARCHAR(32),
   email VARCHAR(64),
@@ -49,17 +51,18 @@ $sql = "CREATE TABLE IF NOT EXISTS quiz (
   )";
 
   if ($mysqli->query($sql) === TRUE) {
-    echo "Table quiz created successfully";
+    // echo "Table quiz created successfully";
   } else {
     echo "Error creating table: " . $mysqli->error;
   }
 
-// Insert the users data, score and the date into the database
+// SQL query for inserting user data into the created table
 $sql = "INSERT INTO quiz (name, email, score, date)
 VALUES ('$name', '$email', '{$_SESSION['score']}', '$date')";
 
+// Run the query. If succesful data has been inserted. Reset score variable.
 if ($mysqli->query($sql) === TRUE) {
-  echo "New record created successfully";
+  // echo "New record created successfully";
   $score = $_SESSION['score'];
   unset($_SESSION['score']);
 } else {

@@ -10,22 +10,26 @@
 <?php
 session_start();
 
+// Set variables
 $answer = "";
 $answerErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if(isset($_POST['submit'])){
+        // Check if an answer has been selected
     if(empty($_POST['q2-answers'])) {
       $answerErr = "Please select a value";
     } else {
-      // check if answer is correct or not
+      // Check if the answer is correct
       if ($_POST['q2-answers'] == "c") {
         $answerErr = "Correct! Moving to the next question...";
+        // Increment score, and wait 3 seconds before moving to next question
         $_SESSION['score'] = $_SESSION['score'] + 1;
         header("Refresh:3; url=q3.php");
 
       } else {
         $answerErr = "Incorrect! The right answer was 'C'.";
+        // Leave score alone, and wait 3 seconds before moving to next question
         header("Refresh:3; url=q3.php");
       }
     }
