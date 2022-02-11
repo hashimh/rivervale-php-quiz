@@ -34,7 +34,7 @@ if ($mysqli->connect_error) {
 
 // Try to connect to 'quiz' database - if unsuccesful, then create 'quiz' db
 if (!$mysqli->select_db('quiz')) {
-  echo "Could not connect to database: " . $mysqli->error;
+  // echo "Could not connect to database: " . $mysqli->error;
   if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS quiz")) {
       echo "Could not create database: " . $mysqli->error;
   }
